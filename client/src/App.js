@@ -1,8 +1,20 @@
 import React from 'react';
+import ReactDom from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+class App extends React.Component {
+  //state
+  state = {
+    state: '',
+    otherState: '',
+  };
+
+  componentDidMount() {
+    fetch(http://localhost:5000/api/players)
+  }
+  
+  
   return (
     <div className="App">
       <header className="App-header">
