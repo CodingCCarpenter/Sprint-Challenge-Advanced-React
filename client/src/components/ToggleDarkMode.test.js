@@ -1,12 +1,13 @@
 import React from "react";
 import * as rtl from "@testing-library/react";
-import ToggleDarkMode from "./ToggleDarkMode.js";
+import Navbar from "./NavBar.js";
+import Navbar from "./NavBar.js";
 
 test("It renders without crashing", () => {
-  rtl.render(<ToggleDarkMode />);
+  rtl.render(<Navbar />);
 });
 
 test("It renders the Dark/Light Mode button", () => {
-  const container = rtl.render(<ToggleDarkMode />);
+  const container = rtl.render(<Navbar />);
   container.getByTestId("dark-mode-button");
 });

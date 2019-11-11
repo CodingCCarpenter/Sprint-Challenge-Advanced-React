@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Players from './components/Players.js';
-import ToggleDarkMode from './components/ToggleDarkMode.js';
+import Navbar from './components/NavBar.js';
 
 import './App.css';
 
@@ -15,22 +15,24 @@ class App extends React.Component {
     };
   }
  
-  
-
+  //componentDidMount
   componentDidMount() {
     axios
+      //grabbing players object from server data
       .get("http://localhost:5000/api/players")
       .then((res) => {
         console.log(res.data);
+        //setting players to the data object
         this.setState({ players: res.data });
       })
       .catch((err) => console.log(err));
   }
 
+  //display components and pass state 
   render() {
     return (
       <div className="App">
-        <ToggleDarkMode />
+        <Navbar />
         <Players players={this.state.players} />
       </div>
     );
