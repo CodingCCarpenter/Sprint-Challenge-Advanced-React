@@ -4,35 +4,37 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
-  //state
-  state = {
-    state: '',
-    otherState: '',
-  };
+  //constructor function to set state
+  constructor() {
+    super();
+    this.state = {
+      players: []
+    };
+  }
+ 
+  
 
   componentDidMount() {
-    fetch(http://localhost:5000/api/players)
-  }
+    axios
+      .get('http://localhost:5000/api/players')
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ players: res.data });
+      })
+      .catch((err) => {
+        console.log("OH NO! We have an error :(  Let's see what the error message is!", err))
+      }
   
-  
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+ render(){ 
+  return(
+    <div className = 'App'>
+      <h1>Women's World Cup Line-up</h1>
+      <h2>Basic information about all the best athletes!</h2>
+      <Players players={this.state.players} />
+      <ToggleDarkMode />
     </div>
   );
+};
 }
 
 export default App;
