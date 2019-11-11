@@ -224,7 +224,7 @@ img {
   width: 100%;
   max-width: 900px;
   margin: 4% auto;
-  border: 1px solid orange;
+  border: 5px solid orange;
   padding: 2%;
 }
 
@@ -233,7 +233,7 @@ img {
   margin-left: 8px;
   min-width: 160px;
   text-align: left;
-  font-size: large;
+  font-size: medium;
   font-weight: 900;
 }
 

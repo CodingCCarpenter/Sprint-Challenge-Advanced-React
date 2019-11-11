@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import Players from './components/Players.js';
 import Navbar from './components/NavBar.js';
@@ -31,12 +32,25 @@ class App extends React.Component {
   //display components and pass state 
   render() {
     return (
-      <div className="App">
+      <div className="App">  
         <Navbar />
+        <P>Total number of players: <Span>{this.state.players.length}</Span></P>
         <Players players={this.state.players} />
       </div>
     );
   }
-}
+};
+
+const P = styled.p`
+  font-size: medium;
+  padding: 3%;
+`;
+
+const Span = styled.span` 
+  font-weight: 900;
+  padding: 1%;
+  border: 5px solid purple;
+  background: orange;
+`
 
 export default App;
