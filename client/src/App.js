@@ -7,6 +7,15 @@ import Navbar from './components/NavBar.js';
 
 import './App.css';
 
+
+export const hello = (props) => {
+  return `Hello ${props}`;
+};
+
+export const sum = (num1, num2) => {
+  return num1 + num2 ;
+};
+
 class App extends React.Component {
   //constructor function to set state
   constructor() {
@@ -22,7 +31,6 @@ class App extends React.Component {
       //grabbing players object from server data
       .get("http://localhost:5000/api/players")
       .then((res) => {
-        console.log(res.data);
         //setting players to the data object
         this.setState({ players: res.data });
       })
