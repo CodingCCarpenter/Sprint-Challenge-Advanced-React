@@ -1,26 +1,64 @@
 import React from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
+import styled from 'styled-components';
+
+import Players from './components/Players.js';
+import Navbar from './components/NavBar.js';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+export const hello = (props) => {
+  return `Hello ${props}`;
+};
+
+export const sum = (num1, num2) => {
+  return num1 + num2 ;
+};
+
+class App extends React.Component {
+  //constructor function to set state
+  constructor() {
+    super();
+    this.state = {
+      players: []
+    };
+  }
+ 
+  //componentDidMount
+  componentDidMount() {
+    axios
+      //grabbing players object from server data
+      .get("http://localhost:5000/api/players")
+      .then((res) => {
+        //setting players to the data object
+        this.setState({ players: res.data });
+      })
+      .catch((err) => console.log(err));
+  }
+
+  //display components and pass state 
+  render() {
+    return (
+      <div className="App">  
+        <Navbar />
+        <P>Total number of players: <Span>{this.state.players.length}</Span></P>
+        <Players players={this.state.players} />
+      </div>
+    );
+  }
+};
+
+const P = styled.p`
+  font-size: medium;
+  padding: 3%;
+`;
+
+const Span = styled.span` 
+  font-weight: 900;
+  padding: 1%;
+  border: 5px solid purple;
+  background: orange;
+`
 
 export default App;
